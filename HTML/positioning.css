@@ -1,0 +1,19 @@
+﻿body
+{
+}
+img {
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    left: 250px;
+    top: 250px;
+    z-index: -1;
+}
+
+h1 {
+    position: sticky;
+    top: 0px;
+    background: silver;
+    /*height:150px;*/
+    /*margin:0 0 50px;*/
+}

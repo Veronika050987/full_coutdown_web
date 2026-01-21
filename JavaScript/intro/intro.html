@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript PD_411</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>JavaScript PD_411</h1>
+    <!--<h2>Factorial</h2>-->
+    <details>
+        <summary>Factorial</summary>
+        <input type="number" id="factorial-source" min=0 placeholder="Исходное число для вычисления Факториала" onchange="Factorial2()" />
+        <div id="factorial-result"></div>
+    </details>
+
+    <details>
+        <summary>Power</summary>
+        <h1>Калькулятор степеней</h1>
+        <div class="container">
+            <label for="base">Основание (Base):</label>
+            <input type="number" id="base" value="1" placeholder="Выберите основание">
+
+            <label for="exponent">Степень (Exponent):</label>
+            <input type="number" id="exponent" value="2" placeholder="Выберите степень">
+
+            <button id="calculateButton">Вычислить</button>
+        </div>
+        <h2>Результат:</h2>
+        <p id="resultOutput"></p>
+    </details>
+
+    <!--<details>
+        <summary>Power</summary>
+        <input type="number" id="number-for-power" min=0 placeholder="Число" onchange="Power()" />
+        <input type="number" id="power-for-number" min=0 placeholder="Степень" onchange="Power()" />
+        <div id="power-result"></div>
+    </details>-->
+
+    <details>
+        <summary>Fibonacci sequence</summary>
+        <h1>Генератор ряда Фибоначчи</h1>
+
+        <div class="container">
+
+            <!-- Выбор предопределенного предела -->
+            <div class="limit-selection">
+                <label for="limitPreset">Выбрать предел:</label>
+                <select id="limitPreset">
+                    <option value="10">10 чисел</option>
+                    <option value="20">20 чисел</option>
+                    <option value="30">30 чисел</option>
+                    <option value="50">50 чисел (Макс. для примера)</option>
+                </select>
+            </div>
+
+            <p class="separator">— ИЛИ —</p>
+
+            <!-- Ручной ввод -->
+            <div class="manual-input">
+                <label for="count">Ввести количество чисел:</label>
+                <input type="number" id="count" value="10" min="1" max="50">
+            </div>
+
+            <button id="generateButton">Сгенерировать ряд</button>
+        </div>
+
+        <h2>Результат:</h2>
+        <div id="result" aria-live="polite"></div>
+    </details>
+
+    <details>
+        <summary>Fibonacci 2</summary>
+        <input type="number" id="number-max-fib" min=0 placeholder="Максимальное число" onchange="NumberMaxFib()" />
+        <div id="number-max-fib-result"></div>
+
+        <input type="number" id="number-count-fib" min=0 placeholder="Количество" onchange="NumberCountFib()" />
+        <div id="number-count-fib-result"></div>
+    </details>
+
+    <details>
+        <summary>Number system</summary>
+
+        <h2>Перевод чисел из десятичной в двоичную систему</h2>
+        <label for="decimal-to-binary">Choose decimal number:</label>
+        <input type="number" id="decimal-to-binary" min="0" placeholder="Decimal number" onchange="decimalToBinary()" />
+        <br>
+        <label for="decimal-to-binary-result">Decimal to binary conversion result:</label>
+        <div id="decimal-to-binary-result"></div>
+        <hr>
+
+        <h2>Перевод чисел из десятичной в шестнадцатеричную систему</h2>
+        <label for="decimal-to-hexadecimal">Choose decimal number:</label>
+        <input type="number" id="decimal-to-hexadecimal" min="0" placeholder="Decimal number" onchange="decimalToHexadecimal()" />
+        <br>
+        <label for="decimal-to-hexadecimal-result">Decimal to hexadecimal conversion result:</label>
+        <div id="decimal-to-hexadecimal-result"></div>
+        <hr>
+
+        <h2>Перевод чисел из двоичной в десятичную систему</h2>
+        <label for="binary-to-decimal">Enter binary number:</label>
+        <input type="text" id="binary-to-decimal" min="0" placeholder="Binary number" onchange="binaryToDecimal()" />
+        <br>
+        <label for="binary-to-decimal-result">Binary to decimal conversion result:</label>
+        <div id="binary-to-decimal-result"></div>
+        <hr>
+
+        <h2>Перевод чисел из двоичной в шестнадцатеричную систему</h2>
+        <label for="binary-to-hexadecimal">Enter binary number:</label>
+        <input type="number" id="binary-to-hexadecimal" min="0" placeholder="Binary number" onchange="binaryToHexadecimal()" />
+        <br>
+        <label for="binary-to-hexadecimal-result">Binary to hexadecimal conversion result:</label>
+        <div id="binary-to-hexadecimal-result"></div>
+        <hr>
+
+        <h2>Перевод чисел из шестнадцатеричной в десятичную систему</h2>
+        <label for="hexadecimal-to-decimal">Enter hexadecimal number:</label>
+        <input type="text" id="hexadecimal-to-decimal" min="0" placeholder="Hexadecimal number" onchange="hexadecimalToDecimal()" />
+        <br>
+        <label for="hexadecimal-to-decimal-result">Hexadecimal to decimal conversion result:</label>
+        <div id="hexadecimal-to-decimal-result"></div>
+        <hr>
+
+    </details>
+
+    <script src="script.js"></script>
+    <script>
+        console.log("Hello World!");
+        /*alert("Hello usweri");*/
+        //let data = prompt("Введите номер вашей карты и pin-код:");
+        //console.log(data);
+        //document.write("Ваши данные в безопасности");
+        //let variable;
+        //var v;
+        //const PI = 3.14;
+        //let hello = "Hello";
+        //let world = "World";
+        //document.write("5" * 5);
+        //document.write(2 / 0);
+        /* alert(variable);*/
+        //let n = prompt("Введите число: ");
+        //document.write(`<hr>${n}! = ${Factorial(n)}<hr>`);
+        //Factorial2();
+
+    </script>
+</body>
+</html>

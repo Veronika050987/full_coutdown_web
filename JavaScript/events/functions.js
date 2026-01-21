@@ -1,4 +1,4 @@
-// JavaScript source code
+п»ї// JavaScript source code
 function setImage() {
     let filename = document.getElementById("image-file");
     let reader = new FileReader();
@@ -16,7 +16,8 @@ function setBackground() {
     document.getElementById('color-sample').style.width = "200px";
     document.getElementById('color-sample').style.height = "200px";
 }
-function switchBackground() {
+function switchBackground()
+{
     //let target = document.getElementById("switch-background").src;
     //let path = target.split('/');
     //let file = path[path.length - 1];
@@ -43,20 +44,22 @@ function switchBackground() {
 }
 
 document.addEventListener
-    (
+(
         "mousemove",
-        function (event) {
+        function (event)
+        {
             let x = event.clientX;
             let y = event.clientY;
             document.getElementById("mouse").innerHTML = `X = ${x}, Y = ${y}`;
         }
-    );
+);
 ///////////////////////////////////////////////////////////////////////////////////
 //DOM - Document Object Model
 function addLeadingZero(number) {
     return number < 10 ? "0" + number : number;
 }
-document.body.onload = function tick_timer() {
+document.body.onload = function tick_timer()
+{
     let time = new Date();
     document.getElementById("full-time").innerHTML = time;
     document.getElementById("hours").innerHTML = addLeadingZero(time.getHours());
@@ -75,21 +78,25 @@ document.body.onload = function tick_timer() {
     setTimeout(tick_timer, 100);
 }
 
-document.getElementById("btn-start").onclick = function startCountdownTimer() {
+document.getElementById("btn-start").onclick = function startCountdownTimer()
+{
     let targetDate = document.getElementById("target-date");
     let targetTime = document.getElementById("target-time");
     let btnStart = document.getElementById("btn-start");
-    if (btnStart.value === "Start") {
+    if (btnStart.value === "Start")
+    {
         btnStart.value = "Stop";
         targetDate.disabled = targetTime.disabled = true;
         tickCountdown();
     }
-    else {
+    else
+    {
         btnStart.value = "Start";
         targetDate.disabled = targetTime.disabled = false;
     }
 }
-function tickCountdown() {
+function tickCountdown()
+{
     let now = new Date();
     let targetDateControl = document.getElementById("target-date");
     let targetTimeControl = document.getElementById("target-time");
@@ -100,32 +107,34 @@ function tickCountdown() {
         let targetDateValue = targetDateControl.valueAsDate;
         let targetTimeValue = targetTimeControl.valueAsDate;
 
-        if (!targetDateValue || !targetTimeValue) {
+        if (!targetDateValue || !targetTimeValue)
+        {
             btnStart.value = "Start";
             targetDateControl.disabled = targetTimeControl.disabled = false;
             document.getElementById("display").innerHTML = "Please select date and time!";
             return;
         }
 
-        // Корректируем дату цели на основе вводимого времени (для консистентности)
+        // РљРѕСЂСЂРµРєС‚РёСЂСѓРµРј РґР°С‚Сѓ С†РµР»Рё РЅР° РѕСЃРЅРѕРІРµ РІРІРѕРґРёРјРѕРіРѕ РІСЂРµРјРµРЅРё (РґР»СЏ РєРѕРЅСЃРёСЃС‚РµРЅС‚РЅРѕСЃС‚Рё)
         targetTimeValue.setFullYear(targetDateValue.getFullYear());
         targetTimeValue.setMonth(targetDateValue.getMonth());
         targetTimeValue.setDate(targetDateValue.getDate());
 
-        // --- Проверка завершения ---
+        // --- РџСЂРѕРІРµСЂРєР° Р·Р°РІРµСЂС€РµРЅРёСЏ ---
         let duration = targetTimeValue.getTime() - now.getTime();
-        if (duration <= 0) {
+        if (duration <= 0)
+        {
             document.getElementById("display").innerHTML = "Time's up!";
             btnStart.value = "Start";
             targetDateControl.disabled = targetTimeControl.disabled = false;
-            // Сброс счетчиков в 00:00:00
+            // РЎР±СЂРѕСЃ СЃС‡РµС‚С‡РёРєРѕРІ РІ 00:00:00
             document.getElementById("hours-unit").innerHTML = "00";
             document.getElementById("minutes-unit").innerHTML = "00";
             document.getElementById("seconds-unit").innerHTML = "00";
             return;
         }
 
-        // --- Инициализация переменных для результата ---
+        // --- РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРµСЂРµРјРµРЅРЅС‹С… РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚Р° ---
         let years = 0;
         let months = 0;
         let days = 0;
@@ -133,21 +142,22 @@ function tickCountdown() {
         let minutes = 0;
         let seconds = 0;
 
-        // Создаем рабочую копию текущего времени
+        // РЎРѕР·РґР°РµРј СЂР°Р±РѕС‡СѓСЋ РєРѕРїРёСЋ С‚РµРєСѓС‰РµРіРѕ РІСЂРµРјРµРЅРё
         let calculationNow = new Date(now.getTime());
 
-        // --- 1. Вычисляем ГОДЫ ---
+        // --- 1. Р’С‹С‡РёСЃР»СЏРµРј Р“РћР”Р« ---
         let tempDate = new Date(calculationNow.getTime());
         while (true) {
             tempDate.setFullYear(calculationNow.getFullYear() + years + 1);
-            if (tempDate.getTime() > targetTimeValue.getTime()) {
+            if (tempDate.getTime() > targetTimeValue.getTime())
+            {
                 break;
             }
             years++;
         }
 
-        // --- 2. Вычисляем МЕСЯЦЫ ---
-        // Начинаем расчет с года, который мы только что посчитали
+        // --- 2. Р’С‹С‡РёСЃР»СЏРµРј РњР•РЎРЇР¦Р« ---
+        // РќР°С‡РёРЅР°РµРј СЂР°СЃС‡РµС‚ СЃ РіРѕРґР°, РєРѕС‚РѕСЂС‹Р№ РјС‹ С‚РѕР»СЊРєРѕ С‡С‚Рѕ РїРѕСЃС‡РёС‚Р°Р»Рё
         calculationNow.setFullYear(calculationNow.getFullYear() + years);
 
         let currentMonth = calculationNow.getMonth();
@@ -158,7 +168,7 @@ function tickCountdown() {
             let nextMonthDate = new Date(calculationNow.getTime());
             nextMonthDate.setMonth(currentMonth + 1);
 
-            // Если следующий месяц уже в другом году ИЛИ мы перескакиваем цель
+            // Р•СЃР»Рё СЃР»РµРґСѓСЋС‰РёР№ РјРµСЃСЏС† СѓР¶Рµ РІ РґСЂСѓРіРѕРј РіРѕРґСѓ РР›Р РјС‹ РїРµСЂРµСЃРєР°РєРёРІР°РµРј С†РµР»СЊ
             let nextMonthYear = nextMonthDate.getFullYear();
             let targetYearMatch = nextMonthYear === targetYear;
             let nextMonthExceedsTarget = (nextMonthYear === targetYear && nextMonthDate.getMonth() > targetMonth) || (nextMonthYear > targetYear);
@@ -167,9 +177,9 @@ function tickCountdown() {
                 break;
             }
 
-            // Если следующий месяц совпадает с целевым месяцем и годом, но день/время уже позади, ломаемся
+            // Р•СЃР»Рё СЃР»РµРґСѓСЋС‰РёР№ РјРµСЃСЏС† СЃРѕРІРїР°РґР°РµС‚ СЃ С†РµР»РµРІС‹Рј РјРµСЃСЏС†РµРј Рё РіРѕРґРѕРј, РЅРѕ РґРµРЅСЊ/РІСЂРµРјСЏ СѓР¶Рµ РїРѕР·Р°РґРё, Р»РѕРјР°РµРјСЃСЏ
             if (nextMonthYear === targetYear && nextMonthDate.getMonth() === targetMonth) {
-                // Проверяем, перескочили ли мы целевое время в этот месяц
+                // РџСЂРѕРІРµСЂСЏРµРј, РїРµСЂРµСЃРєРѕС‡РёР»Рё Р»Рё РјС‹ С†РµР»РµРІРѕРµ РІСЂРµРјСЏ РІ СЌС‚РѕС‚ РјРµСЃСЏС†
                 if (nextMonthDate.getTime() > targetTimeValue.getTime()) {
                     break;
                 }
@@ -180,7 +190,7 @@ function tickCountdown() {
             currentMonth = calculationNow.getMonth();
         }
 
-        // --- 3. Оставшееся время (Дни, Часы, Минуты, Секунды) ---
+        // --- 3. РћСЃС‚Р°РІС€РµРµСЃСЏ РІСЂРµРјСЏ (Р”РЅРё, Р§Р°СЃС‹, РњРёРЅСѓС‚С‹, РЎРµРєСѓРЅРґС‹) ---
 
         let remainingDurationMs = targetTimeValue.getTime() - calculationNow.getTime();
         let totalSeconds = Math.trunc(remainingDurationMs / 1000);
@@ -189,25 +199,25 @@ function tickCountdown() {
         const SECONDS_PER_HOUR = 3600;
         const SECONDS_PER_MINUTE = 60;
 
-        // Дни (остаток после годов и месяцев)
+        // Р”РЅРё (РѕСЃС‚Р°С‚РѕРє РїРѕСЃР»Рµ РіРѕРґРѕРІ Рё РјРµСЃСЏС†РµРІ)
         days = Math.floor(totalSeconds / SECONDS_PER_DAY);
         let remainingSecondsAfterDays = totalSeconds % SECONDS_PER_DAY;
 
-        // Часы
+        // Р§Р°СЃС‹
         hours = Math.floor(remainingSecondsAfterDays / SECONDS_PER_HOUR);
         let remainingSecondsAfterHours = remainingSecondsAfterDays % SECONDS_PER_HOUR;
 
-        // Минуты
+        // РњРёРЅСѓС‚С‹
         minutes = Math.floor(remainingSecondsAfterHours / SECONDS_PER_MINUTE);
 
-        // Секунды
+        // РЎРµРєСѓРЅРґС‹
         seconds = remainingSecondsAfterHours % SECONDS_PER_MINUTE;
 
 
-        // --- Отображение результата ---
+        // --- РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЂРµР·СѓР»СЊС‚Р°С‚Р° ---
         document.getElementById("years-unit").innerHTML = addLeadingZero(years);
         document.getElementById("months-unit").innerHTML = addLeadingZero(months);
-        document.getElementById("days-unit").innerHTML = addLeadingZero(days); // <-- Дни тоже нужно отображать
+        document.getElementById("days-unit").innerHTML = addLeadingZero(days); // <-- Р”РЅРё С‚РѕР¶Рµ РЅСѓР¶РЅРѕ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ
         document.getElementById("hours-unit").innerHTML = addLeadingZero(hours);
         document.getElementById("minutes-unit").innerHTML = addLeadingZero(minutes);
         document.getElementById("seconds-unit").innerHTML = addLeadingZero(seconds);
